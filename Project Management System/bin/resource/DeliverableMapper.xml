@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="data.DeliverableMapper">
+
+	<resultMap id="deliverableMap" type="domains.Deliverable">
+  	<id property="ID" column="ID" javaType="int" jdbcType="NUMERIC"/>
+  	<result property="name"  column="name" javaType="String" jdbcType="VARCHAR"/>
+  	<result property="description"  column="description" javaType="String" jdbcType="VARCHAR"/>
+  	<result property="dueDate"  column="dueDate" javaType="java.util.Date" jdbcType="DATE"/>
+  	</resultMap>
+	
+	
+	<!-- Returns all deliverables stored inside the mysql deliverables table -->
+	<select id="getDeliverables" parameterType="int" resultType="Deliverable">
+		select ID as "ID", name as "name", description as "description", dueDate as "dueDate"
+		from pmsdb.deliverables order by name
+	</select>
+	
+	<!-- Returns the Deliverable in the database which has the given ID -->
+	<select id="searchByID" parameterType="int" resultType="Deliverable">
+		select ID as ID, name as "name", description as "description", dueDate as "dueDate" from pmsdb.deliverables 
+		where ID = #{ID}
+	</select>
+	
+	<!-- Returns all deliverables stored inside the mysql deliverables table which have the given name -->
+	<select id="searchByName" parameterType="String" resultType="Deliverable">
+		select ID as ID, name as "name", description as "description", dueDate as "dueDate" from pmsdb.deliverables 
+		where name = #{name}
+	</select>
+	
+	<select id="searchByDueDate" parameterType="Date" resultType="Deliverable">
+		select ID as ID, name as "name", description as "description", dueDate as "dueDate" from pmsdb.deliverables 
+		where dueDate = #{dueDate}
+	</select>
+	
+	<!-- Inserts a new deliverable in the mysql deliverables table -->
+	<insert id="createDeliverable" keyColumn="ID" useGeneratedKeys="true" parameterType="Deliverable">
+		insert into pmsdb.deliverables (name, description, dueDate)
+		values (#{name}, #{description}, #{dueDate})
+	</insert>
+	
+	<!-- Edits the deliverable entry in the database which has the given ID -->
+	<update id="updateDeliverable" parameterType="Deliverable">
+		update pmsdb.deliverables set name = #{name}, description = #{description}, dueDate = #{dueDate}
+		where ID = #{ID}
+	</update>
+
+	<delete id="deleteByID" parameterType="int">
+		delete from pmsdb.deliverables where ID = #{ID}
+	</delete>
+	
+	<delete id="deleteByName" parameterType="String">
+		delete from pmsdb.deliverables where name = #{name}
+	</delete>
+	
+	<delete id="deleteByDueDate" parameterType="Date">
+		delete from pmsdb.deliverables where dueDate = #{dueDate}
+	</delete>
+	
+	<delete id="deleteAll" parameterType="int">
+		delete from pmsdb.deliverables
+	</delete>
+	
+	
+	
+</mapper>

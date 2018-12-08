@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	<properties resource="resource/config.properties"/>
+	
+	<settings>
+		<setting name="useGeneratedKeys" value="true"/>
+	</settings>
+	<typeAliases>
+		<typeAlias alias="Deliverable" type="domains.Deliverable"/>
+		<typeAlias alias="Requirement" type="domains.Requirement"/>
+		<typeAlias alias="Task" type="domains.Task"/>
+		<typeAlias alias="DocumentReference" type="domains.DocumentReference"/>
+		<typeAlias alias="Resource" type="domains.Resource"/>
+		<typeAlias alias="Issue" type="domains.Issue"/>
+		<typeAlias alias="ActionItem" type="domains.ActionItem"/>
+		<typeAlias alias="Decision" type="domains.Decision"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+	
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="${driver}"/>
+    			<property name="url" value="${url}"/>
+    			<property name="username" value="${username}"/>
+    			<property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="resource/DeliverableMapper.xml"/>
+		<mapper resource="resource/RequirementMapper.xml"/>
+		<mapper resource="resource/TaskMapper.xml"/>
+		<mapper resource="resource/DocumentReferenceMapper.xml"/>
+		<mapper resource="resource/ResourceMapper.xml"/>
+		<mapper resource="resource/IssueMapper.xml"/>
+		<mapper resource="resource/ActionItemMapper.xml"/>
+		<mapper resource="resource/DecisionMapper.xml"/>
+	</mappers>
+
+</configuration>

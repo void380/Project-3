@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="data.RequirementMapper">
+
+	<resultMap id="RequirementMap" type="domains.Requirement">
+  	<id property="ID" column="ID" javaType="int" jdbcType="NUMERIC"/>
+  	<result property="name"  column="name" javaType="String" jdbcType="VARCHAR"/>
+  	<result property="reqText"  column="reqText" javaType="String" jdbcType="VARCHAR"/>
+  	<result property="sourceDoc"  column="sourceDoc" javaType="String" jdbcType="VARCHAR"/>
+  	
+  	<association property="deliverables" column="ID" javaType="Deliverable">
+  		<id property="ID" column="ID"/>
+  		<result property="name"  column="name" javaType="String" jdbcType="VARCHAR"/>
+  		<result property="description"  column="description" javaType="String" jdbcType="VARCHAR"/>
+  		<result property="dueDate"  column="dueDate" javaType="java.util.Date" jdbcType="DATE"/>
+  	</association>
+  	
+  	</resultMap>
+	
+	
+	<!-- Returns all requirements stored inside the mysql requirements table -->
+	<select id="getRequirements" parameterType="int" resultType="Requirement">
+		select ID as "ID", name as "name", reqText as "reqText"
+		from pmsdb.requirements order by name
+	</select>
+	
+	<!-- Returns all requirements stored inside the mysql requirements table which have the given name -->
+	<select id="searchByName" parameterType="String" resultType="Requirement">
+		select ID as ID, name as "name", reqText as "reqText" from pmsdb.requirements 
+		where name = #{name}
+	</select>
+	
+	<select id="searchBySourceDoc" parameterType="String" resultType="Requirement">
+		select ID as ID, name as "name", reqText as "reqText", sourceDoc as "sourceDoc" from pmsdb.requirements 
+		where sourceDoc = #{sourceDoc}
+	</select>
+	
+	<!-- Inserts a new Requirement in the mysql requirements table -->
+	<insert id="createRequirement" keyColumn="ID" useGeneratedKeys="true" parameterType="Requirement">
+		insert into pmsdb.requirements (name, reqText, sourceDoc, deliverable_ID)
+		values (#{name}, #{reqText}, #{sourceDoc}, null)
+	</insert>
+	
+	<!-- Uses two integer keys for allocation.  The requirement ID is given to indicate which requirement should be updated.  The deliverable ID is given to indicate which deliverable is allocated to this requirement. -->
+	<update id="allocateDeliverable" parameterType="int">
+		update pmsdb.requirements set deliverable_ID = #{deliverable_ID}
+		where ID = #{requirement_ID}
+	</update>
+	
+	<!-- Uses two integer keys for deallocation.  The requirement ID is given to indicate which requirement should be updated.  The deliverable ID is given to indicate which deliverable is deallocated from this requirement. -->
+	<update id="deallocateDeliverable" parameterType="int">
+		update pmsdb.requirements set deliverable_ID = null
+		where ID = #{requirement_ID}
+	</update>
+
+	<update id="updateRequirement" parameterType="Requirement">
+		update pmsdb.requirements set name = #{name}, reqText = #{reqText}, sourceDoc = #{sourceDoc}
+		where ID = #{ID}
+	</update>
+
+	<delete id="deleteByID" parameterType="int">
+		delete from pmsdb.requirements where ID = #{ID}
+	</delete>
+	
+	<delete id="deleteByName" parameterType="String">
+		delete from pmsdb.requirements where name = #{name}
+	</delete>
+	
+	<delete id="deleteBySourceDoc" parameterType="String">
+		delete from pmsdb.requirements where sourceDoc = #{sourceDoc}
+	</delete>
+	
+	<delete id="deleteAll" parameterType="int">
+		delete from pmsdb.requirements
+	</delete>
+	
+
+	
+	
+	
+</mapper>

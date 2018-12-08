@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="data.TaskMapper">
+
+	<resultMap id="TaskMap" type="domains.Task">
+  	<id property="ID" column="ID" javaType="int" jdbcType="NUMERIC"/>
+  	<result property="name"  column="name" javaType="String" jdbcType="VARCHAR"/>
+  	<result property="description"  column="description" javaType="String" jdbcType="VARCHAR"/>
+  	<result property="sourceDoc"  column="sourceDoc" javaType="String" jdbcType="VARCHAR"/>
+  	
+  	<association property="deliverables" column="ID" javaType="Deliverable">
+  		<id property="ID" column="ID"/>
+  		<result property="name"  column="name" javaType="String" jdbcType="VARCHAR"/>
+  		<result property="description"  column="description" javaType="String" jdbcType="VARCHAR"/>
+  		<result property="dueDate"  column="dueDate" javaType="java.util.Date" jdbcType="DATE"/>
+  	</association>
+  	
+  	</resultMap>
+
+	<!-- Returns all tasks stored inside the mysql tasks table -->
+	<select id="getTasks" parameterType="int" resultType="Task">
+		select ID as "ID", name as "name", description as "description"
+		from pmsdb.tasks order by name
+	</select>
+	
+	<!-- Returns all tasks stored inside the mysql tasks table which have the given name -->
+	<select id="searchByName" parameterType="String" resultType="Task">
+		select ID as ID, name as "name", description as "description" from pmsdb.tasks 
+		where name = #{name}
+	</select>
+	
+	<!-- Inserts a new Task in the mysql tasks table -->
+	<insert id="createTask" keyColumn="ID" useGeneratedKeys="true" parameterType="Task">
+		insert into pmsdb.tasks (name, description, sourceDoc, deliverable_ID)
+		values (#{name}, #{description}, #{sourceDoc}, null)
+	</insert>
+	
+	<!-- Uses two integer keys for allocation.  The task ID is given to indicate which task should be updated.  The deliverable ID is given to indicate which deliverable is allocated to this task. -->
+	<update id="allocateDeliverable" parameterType="int">
+		update pmsdb.tasks set deliverable_ID = #{deliverable_ID}
+		where ID = #{task_ID}
+	</update>
+	
+	<!-- Uses two integer keys for deallocation.  The task ID is given to indicate which task should be updated.  The deliverable ID is given to indicate which deliverable is deallocated from this task. -->
+	<update id="deallocateDeliverable" parameterType="int">
+		update pmsdb.tasks set deliverable_ID = null
+		where ID = #{task_ID}
+	</update>
+
+	<update id="updateTask" parameterType="Task">
+		update pmsdb.tasks set name = #{name}, description = #{description}
+		where ID = #{ID}
+	</update>
+
+	<delete id="deleteByID" parameterType="int">
+		delete from pmsdb.tasks where ID = #{ID}
+	</delete>
+	
+	<delete id="deleteByName" parameterType="String">
+		delete from pmsdb.tasks where name = #{name}
+	</delete>
+	
+	<delete id="deleteAll" parameterType="int">
+		delete from pmsdb.tasks
+	</delete>
+
+
+</mapper>
