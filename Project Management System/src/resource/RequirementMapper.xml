@@ -17,12 +17,18 @@
   	</association>
   	
   	</resultMap>
-	
-	
+
 	<!-- Returns all requirements stored inside the mysql requirements table -->
 	<select id="getRequirements" parameterType="int" resultType="Requirement">
 		select ID as "ID", name as "name", reqText as "reqText"
 		from pmsdb.requirements order by name
+	</select>
+	
+	<!-- Returns all requirements that are allocated to the given Deliverable ID -->
+	<select id="getRequirementsAllocatedToDeliverableID" parameterType="int" resultType="Requirement">
+		select ID as "ID", name as "name", reqText as "reqText", sourceDoc as "sourceDoc"
+		from pmsdb.requirements
+		where deliverable_ID = #{deliverable_ID}
 	</select>
 	
 	<!-- Returns all requirements stored inside the mysql requirements table which have the given name -->

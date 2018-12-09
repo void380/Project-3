@@ -137,5 +137,20 @@ public class IOController {
 		return requirement;
 	}
 	
+	public static void allocateRequirementToDeliverableID(){
+		
+		//The prompts for allocating a requirement to a deliverable.
+		int reqID, delivID;
+		
+		IOController.displayRequirements(RequirementDAO.getRequirements(session));
+		System.out.println("Enter the ID of the Requirement you wish to modify:  ");
+		reqID = IOController.inputNumeric();
+		
+		IOController.displayDeliverables(DeliverableDAO.getDeliverables(session));
+		System.out.println("Enter the ID of the Deliverable you wish to allocate the Requirement to:  ");
+		delivID = IOController.inputNumeric();
+		
+		
+	}
 	
 }

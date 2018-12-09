@@ -1,15 +1,12 @@
 package drivers;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import data.DeliverableMapper;
 import data.RequirementMapper;
 import domains.Requirement;
-import drivers.DeliverableDAO;
-import domains.Deliverable;
+
 
 public class RequirementDAO {
 	
@@ -19,6 +16,13 @@ public class RequirementDAO {
 		
 		requirementMapper = session.getMapper(RequirementMapper.class);
 		List<Requirement> list = requirementMapper.getRequirements();
+		return list;
+	}
+	
+	public static List<Requirement> getRequirementsAllocatedToDeliverableID(SqlSession session, int deliverable_ID){
+		
+		requirementMapper = session.getMapper(RequirementMapper.class);
+		List<Requirement> list = requirementMapper.getRequirementsAllocatedToDeliverableID(deliverable_ID);
 		return list;
 	}
 	

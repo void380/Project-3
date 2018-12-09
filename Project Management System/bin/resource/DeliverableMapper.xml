@@ -11,7 +11,7 @@
   	</resultMap>
 	
 	
-	<!-- Returns all deliverables stored inside the mysql deliverables table -->
+	<!-- Returns all deliverables stored inside the mysql deliverables table ordered by Name -->
 	<select id="getDeliverables" parameterType="int" resultType="Deliverable">
 		select ID as "ID", name as "name", description as "description", dueDate as "dueDate"
 		from pmsdb.deliverables order by name

@@ -1,7 +1,6 @@
 package data;
 
 import java.util.List;
-import java.util.Date;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -10,6 +9,8 @@ import domains.Requirement;
 public interface RequirementMapper {
 	
 	public List<Requirement> getRequirements();
+	
+	public List<Requirement> getRequirementsAllocatedToDeliverableID(@Param("deliverable_ID") int deliverable_ID);
 	
 	public List<Requirement> searchByName(@Param("name") String pName);
 	

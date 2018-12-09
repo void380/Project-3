@@ -1,7 +1,7 @@
 package domains;
 
 import java.util.Date;
-import java.util.TreeSet;
+import java.util.List;
 
 import domains.Requirement;
 import domains.Task;
@@ -13,8 +13,8 @@ public class Deliverable {
 	private String description;
 	private Date dueDate;
 	
-	private TreeSet<Requirement> listOfRequirements;
-	private TreeSet<Task> listOfTasks;
+	private List<Requirement> listOfRequirements;
+	private List<Task> listOfTasks;
 	
 	public Deliverable(){
 		ID = 0;
@@ -58,7 +58,7 @@ public class Deliverable {
 	}
 	
 	
-	public void addRequirement(Requirement requirement){
+	public void allocateRequirement(Requirement requirement){
 		
 		if (requirement != null)
 			listOfRequirements.add(requirement);
