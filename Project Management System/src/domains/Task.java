@@ -5,6 +5,7 @@ import java.util.List;
 
 import domains.Resource;
 import domains.Issue;
+import domains.Decision;
 
 public class Task {
 	
@@ -25,6 +26,7 @@ public class Task {
 	private List<Task> predecessorTasks;
 	private List<Task> successorTasks;
 	private List<Issue> listOfIssues;
+	private List<Decision> listOfDecisions;
 	
 	public Task(){
 		
@@ -147,8 +149,18 @@ public class Task {
 		this.listOfIssues = listOfIssues;
 	}
 
+	public List<Decision> getDecisions(){
+		return listOfDecisions;
+	}
 	
+	public void addDecision(Decision decision) {
+		if (!listOfDecisions.contains(decision))
+			listOfDecisions.add(decision);
+	}
 	
+	public void removeDecision(Decision decision) {
+		listOfDecisions.remove(decision);
+	}
 	
 	
 }

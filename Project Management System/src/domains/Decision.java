@@ -5,6 +5,7 @@ import java.util.List;
 
 import domains.Resource;
 import domains.ReferenceDocument;
+import domains.Task;
 
 public class Decision {
 	
@@ -22,6 +23,7 @@ public class Decision {
 	private Date updateDate;
 	private Date noteDate;
 	
+	private List<Task> affectedTasks;
 	private List<String> meetingNotes;
 	private List<ReferenceDocument> listOfReferenceDocuments;
 	private Resource decisionMaker;
@@ -105,6 +107,20 @@ public class Decision {
 	public void setNoteDate(Date noteDate) {
 		this.noteDate = noteDate;
 	}
+	
+	public List<Task> getAffectedTasks(){
+		return affectedTasks;
+	}
+	
+	public void addAffectedTask(Task task) {
+		if (!affectedTasks.contains(task))
+			affectedTasks.add(task);
+	}
+	
+	public void removeAffectedTask(Task task) {
+		affectedTasks.remove(task);
+	}
+	
 	public List<String> getMeetingNotes() {
 		return meetingNotes;
 	}
