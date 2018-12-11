@@ -111,7 +111,11 @@ public class Requirement {
 		clientRef.remove(ref);
 	}
 	
-	
+	@Override
+	public boolean equals(Object o){
+		// TODO Auto-generated method stub
+		return true;
+	}
 	
 	
 	

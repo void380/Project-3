@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import domains.Requirement;
-import domains.Task;
+import domains.Task_Base;
 
 public class Deliverable {
 	
@@ -14,7 +14,7 @@ public class Deliverable {
 	private Date dueDate;
 	
 	private List<Requirement> listOfRequirements;
-	private List<Task> listOfTasks;
+	private List<Task_Base> listOfTasks;
 	
 	public Deliverable(){
 		ID = 0;
@@ -64,4 +64,9 @@ public class Deliverable {
 			listOfRequirements.add(requirement);
 	}
 	
+	@Override
+	public boolean equals(Object o){
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

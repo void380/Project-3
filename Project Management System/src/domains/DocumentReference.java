@@ -8,5 +8,11 @@ public class DocumentReference{
 		this.page = page;
 		this.paragraph = paragraph;
 	}
+	
+	@Override
+	public boolean equals(Object o){
+		// TODO Auto-generated method stub
+		return true;
+	}
 }
 

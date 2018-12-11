@@ -5,7 +5,7 @@ import java.util.List;
 
 import domains.Resource;
 import domains.ReferenceDocument;
-import domains.Task;
+import domains.Task_Base;
 
 public class Decision {
 	
@@ -23,7 +23,7 @@ public class Decision {
 	private Date updateDate;
 	private Date noteDate;
 	
-	private List<Task> affectedTasks;
+	private List<Task_Base> affectedTasks;
 	private List<String> meetingNotes;
 	private List<ReferenceDocument> listOfReferenceDocuments;
 	private Resource decisionMaker;
@@ -108,16 +108,16 @@ public class Decision {
 		this.noteDate = noteDate;
 	}
 	
-	public List<Task> getAffectedTasks(){
+	public List<Task_Base> getAffectedTasks(){
 		return affectedTasks;
 	}
 	
-	public void addAffectedTask(Task task) {
+	public void addAffectedTask(Task_Base task) {
 		if (!affectedTasks.contains(task))
 			affectedTasks.add(task);
 	}
 	
-	public void removeAffectedTask(Task task) {
+	public void removeAffectedTask(Task_Base task) {
 		affectedTasks.remove(task);
 	}
 	
@@ -142,5 +142,9 @@ public class Decision {
 	}
 	
 	
-	
+	@Override
+	public boolean equals(Object o){
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

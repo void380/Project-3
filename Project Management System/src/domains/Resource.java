@@ -33,5 +33,9 @@ public class Resource {
 		this.payRate = payRate;
 	}
 	
-	
+	@Override
+	public boolean equals(Object o){
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

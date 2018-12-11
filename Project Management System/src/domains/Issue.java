@@ -5,6 +5,7 @@ import java.util.List;
 
 import domains.ActionItem;
 import domains.Decision;
+import domains.Task_Base;
 
 public class Issue {
 	
@@ -21,6 +22,7 @@ public class Issue {
 	
 	private List<ActionItem> listOfActionItems;
 	private List<Decision> listOfDecisions;
+	private List<Task_Base> affectedTasks;
 	
 	
 	public String getName() {
@@ -97,7 +99,11 @@ public class Issue {
 	}
 	
 	
-	
+	@Override
+	public boolean equals(Object o){
+		// TODO Auto-generated method stub
+		return true;
+	}
 	
 	
 	

@@ -1,0 +1,4 @@
+CREATE USER 'pmsdbuser'@'localhost' IDENTIFIED BY 'Guyxe!AZ5E-CYysApFmpg';
+FLUSH PRIVILEGES;
+GRANT SELECT, INSERT, UPDATE, DELETE ON pmsdb.* TO 'pmsdbuser'@'localhost';
+FLUSH PRIVILEGES;

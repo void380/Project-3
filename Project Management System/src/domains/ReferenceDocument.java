@@ -37,4 +37,10 @@ public class ReferenceDocument {
 	public void setReferenceName(String referenceName) {
 		this.referenceName = referenceName;
 	}
+	
+	@Override
+	public boolean equals(Object o){
+		// TODO Auto-generated method stub
+		return true;
+	}
 }

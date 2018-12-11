@@ -53,4 +53,10 @@ public class DropDownList {
 	public List<String> getOptions(){
 		return listOfOptions;
 	}
+	
+	@Override
+	public boolean equals(Object o){
+		// TODO Auto-generated method stub
+		return true;
+	}
 }
