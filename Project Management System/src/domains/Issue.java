@@ -9,6 +9,7 @@ import domains.Task_Base;
 
 public class Issue {
 	
+	private int ID;
 	private String name;
 	private String description;
 	private String priority;
@@ -24,6 +25,19 @@ public class Issue {
 	private List<Decision> listOfDecisions;
 	private List<Task_Base> affectedTasks;
 	
+	public Issue(){
+		ID = 0;
+		name = "";
+		description = "";
+		priority = "";
+		severity = "";
+		status = "";
+		statusDescription = "";
+		dateRaised = new Date();
+		dateAssigned = new Date();
+		expectedCompletionDate = new Date();
+		updateDate = new Date();
+	}
 	
 	public String getName() {
 		return name;
