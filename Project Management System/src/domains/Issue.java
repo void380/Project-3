@@ -39,6 +39,8 @@ public class Issue {
 		updateDate = new Date();
 	}
 	
+	public Integer getID(){ return ID; }
+	
 	public String getName() {
 		return name;
 	}
