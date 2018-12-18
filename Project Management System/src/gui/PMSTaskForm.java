@@ -193,7 +193,7 @@ public class PMSTaskForm {
 		JPanel panel_5 = new JPanel();
 		panel_5.setLayout(null);
 		panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_5.setBounds(16, 216, 239, 53);
+		panel_5.setBounds(16, 216, 254, 53);
 		frmDeliverablesCreationForm.getContentPane().add(panel_5);
 
 		JLabel lblStartDate = new JLabel("Start Date");
@@ -222,7 +222,7 @@ public class PMSTaskForm {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(16, 267, 239, 53);
+		panel.setBounds(16, 267, 254, 53);
 		frmDeliverablesCreationForm.getContentPane().add(panel);
 
 		JLabel lblEndDate = new JLabel("End Date");
@@ -251,7 +251,7 @@ public class PMSTaskForm {
 		JPanel panel_6 = new JPanel();
 		panel_6.setLayout(null);
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_6.setBounds(16, 319, 239, 53);
+		panel_6.setBounds(16, 319, 254, 53);
 		frmDeliverablesCreationForm.getContentPane().add(panel_6);
 
 		JLabel lblCompletionDate = new JLabel("Completion Date");
@@ -280,7 +280,7 @@ public class PMSTaskForm {
 		JPanel panel_7 = new JPanel();
 		panel_7.setLayout(null);
 		panel_7.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_7.setBounds(16, 369, 239, 53);
+		panel_7.setBounds(16, 369, 254, 53);
 		frmDeliverablesCreationForm.getContentPane().add(panel_7);
 
 		JLabel lblExpectedStartDate = new JLabel("Expected Start Date");
@@ -309,7 +309,7 @@ public class PMSTaskForm {
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(16, 421, 239, 53);
+		panel_3.setBounds(16, 421, 254, 53);
 		frmDeliverablesCreationForm.getContentPane().add(panel_3);
 
 		JLabel lblExpectedEndDate = new JLabel("Expected End Date");
@@ -338,7 +338,7 @@ public class PMSTaskForm {
 		JPanel panel_8 = new JPanel();
 		panel_8.setLayout(null);
 		panel_8.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_8.setBounds(16, 473, 239, 53);
+		panel_8.setBounds(16, 473, 254, 53);
 		frmDeliverablesCreationForm.getContentPane().add(panel_8);
 
 		JLabel lblActualStartDate = new JLabel("Actual Start Date");
@@ -367,7 +367,7 @@ public class PMSTaskForm {
 		JPanel panel_9 = new JPanel();
 		panel_9.setLayout(null);
 		panel_9.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_9.setBounds(16, 525, 239, 53);
+		panel_9.setBounds(16, 525, 254, 53);
 		frmDeliverablesCreationForm.getContentPane().add(panel_9);
 
 		JLabel lblActualEndDate = new JLabel("Actual End Date");
